@@ -1,0 +1,2 @@
+# omoshirui
+MyFirstRepository
