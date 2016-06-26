@@ -1,0 +1,23 @@
+task helloWorld{
+	doLast{
+	println 'Hello world!'
+	}
+}
+
+task startSeesion<<{
+	chant()
+}
+
+def chant(){
+	ant.echo(message:'Repeat after me...')
+}
+
+3.times{
+	task "Gradle$it"<<{
+		println 'Gradle rocks'
+	}
+}
+
+Gradle0.dependsOn startSession
+Gradle2.dependsOn Gradle1,Gradle0
+task groupTherapy(dependsOn: Gradle2)
