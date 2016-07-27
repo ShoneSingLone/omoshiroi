@@ -1,2 +1,4 @@
 # omoshirui
 MyFirstRepository
+# Gradle
+learning...
