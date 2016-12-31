@@ -146,8 +146,8 @@
 	</script>
 </head>
 <body>
-	    <div class="container-fluid">
-	    		<div id="header" class="navbar navbar-fixed-top">
+	<div id="main">
+		<div id="header" class="navbar navbar-fixed-top">
 			<div class="navbar-inner">
 				<div class="brand"><span id="productName">${fns:getConfig('productName')}</span></div>
 				<ul id="userControl" class="nav pull-right">
@@ -171,9 +171,89 @@
 					<li><a href="${ctx}/logout" title="退出登录">退出</a></li>
 					<li>&nbsp;</li>
 				</ul>
+				<%-- <c:if test="${cookie.theme.value eq 'cerulean'}">
+					<div id="user" style="position:absolute;top:0;right:0;"></div>
+					<div id="logo" style="background:url(${ctxStatic}/images/logo_bg.jpg) right repeat-x;width:100%;">
+						<div style="background:url(${ctxStatic}/images/logo.jpg) left no-repeat;width:100%;height:70px;"></div>
+					</div>
+					<script type="text/javascript">
+						$("#productName").hide();$("#user").html($("#userControl"));$("#header").prepend($("#user, #logo"));
+					</script>
+				</c:if> --%>
+				<div class="nav-collapse">
+					<ul id="menu" class="nav" style="*white-space:nowrap;float:none;">
+						<c:set var="firstMenu" value="true"/>
+						<c:forEach items="${fns:getMenuList()}" var="menu" varStatus="idxStatus">
+							<c:if test="${menu.parent.id eq '1'&&menu.isShow eq '1'}">
+								<li class="menu ${not empty firstMenu && firstMenu ? ' active' : ''}">
+									<c:if test="${empty menu.href}">
+										<a class="menu" href="javascript:" data-href="${ctx}/sys/menu/tree?parentId=${menu.id}" data-id="${menu.id}"><span>${menu.name}</span></a>
+									</c:if>
+									<c:if test="${not empty menu.href}">
+										<a class="menu" href="${fn:indexOf(menu.href, '://') eq -1 ? ctx : ''}${menu.href}" data-id="${menu.id}" target="mainFrame"><span>${menu.name}</span></a>
+									</c:if>
+								</li>
+								<c:if test="${firstMenu}">
+									<c:set var="firstMenuId" value="${menu.id}"/>
+								</c:if>
+								<c:set var="firstMenu" value="false"/>
+							</c:if>
+						</c:forEach><%--
+						<shiro:hasPermission name="cms:site:select">
+						<li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#">${fnc:getSite(fnc:getCurrentSiteId()).name}<b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<c:forEach items="${fnc:getSiteList()}" var="site"><li><a href="${ctx}/cms/site/select?id=${site.id}&flag=1">${site.name}</a></li></c:forEach>
+							</ul>
+						</li>
+						</shiro:hasPermission> --%>
+					</ul>
+				</div><!--/.nav-collapse -->
 			</div>
 	    </div>
-
-	    </div>
+	    <div class="container-fluid">
+			<div id="content" class="row-fluid">
+				<div id="left"><%-- 
+					<iframe id="menuFrame" name="menuFrame" src="" style="overflow:visible;" scrolling="yes" frameborder="no" width="100%" height="650"></iframe> --%>
+				</div>
+				<div id="openClose" class="close">&nbsp;</div>
+				<div id="right">
+					<iframe id="mainFrame" name="mainFrame" src="" style="overflow:visible;" scrolling="yes" frameborder="no" width="100%" height="650"></iframe>
+				</div>
+			</div>
+		    <div id="footer" class="row-fluid">
+	            Copyright &copy; 2012-${fns:getConfig('copyrightYear')} ${fns:getConfig('productName')} - Powered By javamg ${fns:getConfig('version')}
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript"> 
+		var leftWidth = 160; // 左侧窗口大小
+		var tabTitleHeight = 33; // 页签的高度
+		var htmlObj = $("html"), mainObj = $("#main");
+		var headerObj = $("#header"), footerObj = $("#footer");
+		var frameObj = $("#left, #openClose, #right, #right iframe");
+		function wSize(){
+			var minHeight = 500, minWidth = 980;
+			var strs = getWindowSize().toString().split(",");
+			htmlObj.css({"overflow-x":strs[1] < minWidth ? "auto" : "hidden", "overflow-y":strs[0] < minHeight ? "auto" : "hidden"});
+			mainObj.css("width",strs[1] < minWidth ? minWidth - 10 : "auto");
+			frameObj.height((strs[0] < minHeight ? minHeight : strs[0]) - headerObj.height() - footerObj.height() - (strs[1] < minWidth ? 42 : 28));
+			$("#openClose").height($("#openClose").height() - 5);// <c:if test="${tabmode eq '1'}"> 
+			$(".jericho_tab iframe").height($("#right").height() - tabTitleHeight); // </c:if>
+			wSizeWidth();
+		}
+		function wSizeWidth(){
+			if (!$("#openClose").is(":hidden")){
+				var leftWidth = ($("#left").width() < 0 ? 0 : $("#left").width());
+				$("#right").width($("#content").width()- leftWidth - $("#openClose").width() -5);
+			}else{
+				$("#right").width("100%");
+			}
+		}// <c:if test="${tabmode eq '1'}"> 
+		function openCloseClickCallBack(b){
+			$.fn.jerichoTab.resize();
+		} // </c:if>
+	</script>
+	<script src="${ctxStatic}/common/wsize.min.js" type="text/javascript"></script>
 </body>
 </html>

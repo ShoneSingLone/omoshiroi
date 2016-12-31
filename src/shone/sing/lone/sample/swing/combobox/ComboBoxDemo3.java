@@ -50,13 +50,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /* ComboBoxDemo2.java requires no other files. */
-public class ComboBoxDemo2 extends JPanel
+public class ComboBoxDemo3 extends JPanel
                            implements ActionListener {
     static JFrame frame;
     JLabel result;
     String currentPattern;
     private JLabel patternLabel2;
-    public ComboBoxDemo2() {
+    public ComboBoxDemo3() {
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         String[] patternExamples = {
                  "dd MMMMM yyyy",
@@ -75,7 +75,6 @@ public class ComboBoxDemo2 extends JPanel
         //Set up the UI for selecting a pattern.
         JLabel patternLabel1 = new JLabel("Enter the pattern string or");
          patternLabel2 = new JLabel("select one from the list:");
-
         JComboBox patternList = new JComboBox(patternExamples);
         patternList.setEditable(true);
         patternList.addActionListener(this);
@@ -118,6 +117,7 @@ public class ComboBoxDemo2 extends JPanel
     public void actionPerformed(ActionEvent e) {
         JComboBox cb = (JComboBox)e.getSource();
         String newSelection = (String)cb.getSelectedItem();
+        patternLabel2.setText(newSelection);
         currentPattern = newSelection;
         reformat();
     }
@@ -148,8 +148,9 @@ public class ComboBoxDemo2 extends JPanel
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //Create and set up the content pane.
-        JComponent newContentPane = new ComboBoxDemo2();
+        JComponent newContentPane = new ComboBoxDemo3();
         newContentPane.setOpaque(true); //content panes must be opaque
+        newContentPane.addPropertyChangeListener(propertyName, listener);
         frame.setContentPane(newContentPane);
 
         //Display the window.

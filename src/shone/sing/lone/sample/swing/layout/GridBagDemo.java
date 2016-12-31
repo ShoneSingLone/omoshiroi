@@ -36,7 +36,7 @@ public class GridBagDemo extends JFrame {
 		j8 = new JList(str);
 		j9 = new JTextArea();
 		j9.setPreferredSize(getSize());
-		JScrollPane scrollPane = new JScrollPane(j9);
+		JScrollPane j9ScrollPane = new JScrollPane(j9);
 		j9.setBackground(Color.PINK);// 为了看出效果，设置了颜色
 		GridBagLayout layout = new GridBagLayout();
 		this.setLayout(layout);
@@ -48,7 +48,7 @@ public class GridBagDemo extends JFrame {
 		this.add(j6);
 		this.add(j7);
 		this.add(j8);
-		this.add(scrollPane);
+		this.add(j9ScrollPane);
 //		this.add(j9);
 		GridBagConstraints s = new GridBagConstraints();// 定义一个GridBagConstraints，
 		// 是用来控制添加进的组件的显示位置
@@ -81,11 +81,10 @@ public class GridBagDemo extends JFrame {
 		s.weighty = 0;
 		layout.setConstraints(j5, s);
 		;
-		s.gridwidth = 4;
+		s.gridwidth = 2;
 		s.weightx = 1;
 		s.weighty = 0;
 		layout.setConstraints(j6, s);
-		;
 		s.gridwidth = 0;
 		s.weightx = 0;
 		s.weighty = 0;
@@ -99,7 +98,7 @@ public class GridBagDemo extends JFrame {
 		s.gridwidth = 5;
 		s.weightx = 0;
 		s.weighty = 1;
-		layout.setConstraints(scrollPane, s);
+		layout.setConstraints(j9ScrollPane, s);
 	}
 	
 	

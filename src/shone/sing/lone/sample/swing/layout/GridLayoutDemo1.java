@@ -24,7 +24,7 @@ public class GridLayoutDemo1
 //         JButton b8=new JButton("硬盘");
 //         JButton b9=new JButton("显示器");
 
-         GridLayout gird=new GridLayout(3,3); //创建一个 GridLayout布局管理器对象，将之行数设为3，列数设为3,并且将之作为中间容器的布局管理器
+         GridLayout gird=new GridLayout(2,3); //创建一个 GridLayout布局管理器对象，将之行数设为3，列数设为3,并且将之作为中间容器的布局管理器
          contentPane.setLayout(gird);
 
          contentPane.add(b1); //将九个普通按钮组件一一添加到中间容器中

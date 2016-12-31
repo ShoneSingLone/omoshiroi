@@ -13,6 +13,12 @@
 </head>
 <body>
 <div id="aside_container">
+<script type="text/javascript">
+<!--
+
+//-->
+alert('hello');
+</script>
 </div>
 <div id="section_container">
     <section id="login_section" class="active">
@@ -46,6 +52,8 @@
 	            	<div>&nbsp;</div>
 	            	<input type="hidden" name="mobileLogin" value="true">
 	                <button id="btn" class="submit block" data-icon="key">登录</button>
+	                <input class="submit block" data-icon="key" value='show' onclick="alert('hello')">
+	                
 	            </form>
 	        </div>
 	    </article>
