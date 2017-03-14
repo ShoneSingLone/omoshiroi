@@ -8,6 +8,7 @@ clone from javamg
 - [ ] MyBatis
 - [ ] Shiro权限管理
 - [ ] 工作流
+- [ ] Gradle[Building Java Projects with Gradle](https://spring.io/guides/gs/gradle/)
 ---
 最近还需要一个报表工具。
 
