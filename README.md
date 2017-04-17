@@ -1,4 +1,4 @@
-# omoshirui
+# omoshiroi
 
 clone from javamg
 ---
