@@ -1,7 +1,12 @@
 package shone.sing.lone.sample.swing.layout;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 public class GridLayoutDemo1
 {
     static final int WIDTH=300;
@@ -14,8 +19,23 @@ public class GridLayoutDemo1
          jf.setVisible(true);
          JPanel contentPane=new JPanel();
          jf.setContentPane(contentPane);
-         JButton b1=new JButton("港币");
+         final JButton b1=new JButton("港币");
+         b1.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("changeThe Text");
+				
+			}
+		});
          JButton b2=new JButton("人民币");
+         b2.addActionListener(new ActionListener() {
+        	 
+        	 @Override
+        	 public void actionPerformed(ActionEvent e) {
+        		 b1.doClick();
+        	 }
+         });
          JButton b3=new JButton("美元");
          JButton b4=new JButton("欧元");
          JButton b5=new JButton("英镑");
@@ -27,7 +47,7 @@ public class GridLayoutDemo1
          GridLayout gird=new GridLayout(2,3); //创建一个 GridLayout布局管理器对象，将之行数设为3，列数设为3,并且将之作为中间容器的布局管理器
          contentPane.setLayout(gird);
 
-         contentPane.add(b1); //将九个普通按钮组件一一添加到中间容器中
+//         contentPane.add(b1); //将九个普通按钮组件一一添加到中间容器中
          contentPane.add(b2);
          contentPane.add(b3);
          contentPane.add(b4);
