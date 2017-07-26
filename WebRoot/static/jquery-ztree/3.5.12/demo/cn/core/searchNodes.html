@@ -42,6 +42,7 @@
 		];
 
 		function focusKey(e) {
+			debugger;
 			if (key.hasClass("empty")) {
 				key.removeClass("empty");
 			}
@@ -119,6 +120,7 @@
 			.bind("blur", blurKey)
 			.bind("propertychange", searchNode)
 			.bind("input", searchNode);
+			
 			$("#name").bind("change", clickRadio);
 			$("#level").bind("change", clickRadio);
 			$("#id").bind("change", clickRadio);

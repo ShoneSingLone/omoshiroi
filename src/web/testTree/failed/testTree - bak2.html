@@ -1,0 +1,121 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="./css/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="./css/themes/icon.css">
+    <script type="text/javascript" src="./js/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="./js/jquery.easyui.min.js"></script>
+</head>
+
+<body>
+    <label id="cc"/>
+    <script>
+    var jsonData = [{
+        "id": 1,
+        "text": "City",
+        "children": [{
+            "id": 11,
+            "text": "Wyoming",
+            "children": [{
+                "id": 111,
+                "text": "Albin"
+            }, {
+                "id": 112,
+                "text": "Canon"
+            }, {
+                "id": 113,
+                "text": "Egbert"
+            }]
+        }, {
+            "id": 12,
+            "text": "Washington",
+            "state": "closed",
+            "children": [{
+                "id": 121,
+                "text": "Bellingham"
+            }, {
+                "id": 122,
+                "text": "Chehalis"
+            }, {
+                "id": 123,
+                "text": "Ellensburg"
+            }, {
+                "id": 124,
+                "text": "Monroe"
+            }]
+        }, {
+            "id": 12,
+            "text": "Washington",
+            "state": "closed",
+            "children": [{
+                "id": 121,
+                "text": "Bellingham"
+            }, {
+                "id": 122,
+                "text": "Chehalis"
+            }, {
+                "id": 123,
+                "text": "Ellensburg"
+            }, {
+                "id": 124,
+                "text": "Monroe"
+            }]
+        }, {
+            "id": 12,
+            "text": "Washington",
+            "state": "closed",
+            "children": [{
+                "id": 121,
+                "text": "Bellingham"
+            }, {
+                "id": 122,
+                "text": "Chehalis"
+            }, {
+                "id": 123,
+                "text": "Ellensburg"
+            }, {
+                "id": 124,
+                "text": "Monroe"
+            }]
+        }, {
+            "id": 12,
+            "text": "Washington",
+            "state": "closed",
+            "children": [{
+                "id": 121,
+                "text": "Bellingham"
+            }, {
+                "id": 122,
+                "text": "Chehalis"
+            }, {
+                "id": 123,
+                "text": "Ellensburg"
+            }, {
+                "id": 124,
+                "text": "Monroe"
+            }]
+        }]
+    }];
+    $(function() {
+        debugger;
+        var widget_comboTree = {};
+        widget_comboTree.html = '<input id="cc" class="easyui-combotree" data-options="multiple:true" style="width:100%">';
+        var $ele_conboTree = $('#cc');
+        $ele_conboTree.html(widget_comboTree.html);
+        $ele_conboTree.combotree({required: false });
+        var options = $ele_conboTree.combotree('options');
+        options.multiple = true;
+        // options.required= true;
+        $ele_conboTree.combotree('options', options);
+        //step1：初始化combotree
+        //step2：options设置多选
+        //step3：加在数据
+        $ele_conboTree.combotree('loadData', jsonData);
+
+    })
+    </script>
+</body>
+
+</html>
