@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="omoshirui">
+    <wb-module deploy-name="omoshiroi">
         <wb-resource deploy-path="/" source-path="/WebRoot"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/resource"/>
-        <property name="java-output-path" value="/omoshirui/WebRoot/WEB-INF/classes"/>
+        <property name="java-output-path" value="/omoshiroi/WebRoot/WEB-INF/classes"/>
         <property name="context-root" value="/javamg"/>
     </wb-module>
 </project-modules>
