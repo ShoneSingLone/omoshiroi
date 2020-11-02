@@ -1,10 +1,19 @@
 import { createApp } from "vue";
-import App from "./App.vue";
 import "@/registerServiceWorker";
+/* 路由 */
 import router from "@/router";
+/* 状态 */
 import store from "@/store";
+/* style */
 import "@/assets/styles/sing/sing_main.scss";
-import { ls } from "@/utils/LocalStorage";
+/* 主视图 */
+import App from "./App.vue";
+/* 指令 */
+import { vTitle } from "@/directive/title";
 
-createApp(App).use(store).use(router).mount("#app");
-/* https://docs.github.com/cn/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token */
+
+createApp(App)
+  .directive("title", vTitle)
+  .use(store)
+  .use(router)
+  .mount("#app");

@@ -1,0 +1,1 @@
+export const fetchGithubBaseURL = "https://api.github.com";

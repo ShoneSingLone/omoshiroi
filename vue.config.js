@@ -4,5 +4,10 @@ module.exports = {
     runtimeCompiler: true,
     devServer: {
         open: true,
+        proxy: {
+            "^https://api.github.com": {
+                target: "https://www.baidu.com"
+            }
+        }
     }
 };
